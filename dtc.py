@@ -16,6 +16,10 @@ if csv_data :
 
             user_input = st.text_input("", placeholder="Place Your Query here", key='input')
             submit = st.form_submit_button(label='Kick')
+     if submit:
+          st.session_state['user'].append(user_input)
+          st.session_state['assistant'].append('output')
+
 
        
 
