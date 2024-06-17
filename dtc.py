@@ -1,24 +1,40 @@
 import streamlit as st
-st.title("IDEN")
 
-csv_data = st.sidebar.file_uploader("Upload your Data", type="csv")
-if csv_data :
-    st.write("Please wait for a time, your data is in processing stage")
-    if 'user' not in st.session_state:
-        st.session_state['user'] = ["Hey there"]
+# Function to display a message bubble
+def message_bubble(message, is_user=True):
+    alignment = "end" if is_user else "start"
+    bubble_color = "#dcf8c6" if is_user else "#ffffff"
+    st.markdown(f"""
+    <div style="display: flex; justify-content: {alignment}; margin: 10px 0;">
+        <div style="background-color: {bubble_color}; padding: 10px 15px; border-radius: 15px; max-width: 60%;">
+            {message}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    if 'assistant' not in st.session_state:
-        st.session_state['assistant'] = ["Hello I am IDEN and I am a new emmerging chatbot which was created by 3 college students Kailash.M,Praveen.S and Dinesh Babu.K.\nThe word IDEN stands for Interactive Data Exploration With NLP.\nIf you upload your csv file and ask question from it, I will provide answer to you.\nEven though I'm a text based bot i can do some basic visualization like bar char,pie chart etc" ]
+# Initialize session state for storing messages
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-    container = st.container()
-    with container:
-        with st.form(key='eda_form', clear_on_submit=True):
+# Display the chat messages
+st.title("WhatsApp-like Chat Interface")
+st.markdown("### Chat History")
 
-            user_input = st.text_input("", placeholder="Place Your Query here", key='input')
-            submit = st.form_submit_button(label='Kick')
-        
-    st.write("you:", user_input)
-    st.write("Chatbot:", user_input)
+for msg in st.session_state.messages:
+    message_bubble(msg["message"], msg["is_user"])
+
+# Input area for new messages
+st.markdown("### Send a message")
+user_input = st.text_input("Your message", "")
+
+if st.button("Send"):
+    if user_input:
+        # Store user message
+        st.session_state.messages.append({"message": user_input, "is_user": True})
+        # Add bot response (for demo purposes, echo the user message)
+        st.session_state.messages.append({"message": f"Bot: {user_input}", "is_user": False})
+        st.experimental_rerun()  # Rerun to update the chat display
+
 
 
        
