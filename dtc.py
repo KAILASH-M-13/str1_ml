@@ -33,7 +33,7 @@ if csv_data :
             # Store user message
             st.session_state.messages.append({"message": user_input, "is_user": True})
             # Add bot response (for demo purposes, echo the user message)
-            st.session_state.messages.append({"message": f"Bot: {user_input}", "is_user": False})
+            st.session_state.messages.append({"message": f"IDEN: {user_input}", "is_user": False})
             st.experimental_rerun()  # Rerun to update the chat display
     if st.button("Clear Chat"):
         st.session_state.messages = []
