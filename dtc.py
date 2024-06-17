@@ -17,8 +17,8 @@ if csv_data :
             user_input = st.text_input("", placeholder="Place Your Query here", key='input')
             submit = st.form_submit_button(label='Kick')
         
-    st.write("you:", response)
-    st.write("Chatbot:", response)
+    st.write("you:", user_input)
+    st.write("Chatbot:", user_input)
 
 
        
