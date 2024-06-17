@@ -3,7 +3,7 @@ import streamlit as st
 # Function to display a message bubble
 def message_bubble(message, is_user=True):
     alignment = "end" if is_user else "start"
-    bubble_color = "#dcf8c6" if is_user else "#ffffff"
+    bubble_color = "red" if is_user else "blue"
     st.markdown(f"""
     <div style="display: flex; justify-content: {alignment}; margin: 10px 0;">
         <div style="background-color: {bubble_color}; padding: 10px 15px; border-radius: 15px; max-width: 60%;">
