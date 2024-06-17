@@ -25,7 +25,7 @@ if csv_data :
         message_bubble(msg["message"], msg["is_user"])
     
     # Input area for new messages
-    st.markdown("### Send a message")
+    st.markdown("Question your data")
     user_input = st.text_input("Your message", "")
     
     if st.button("Send"):
