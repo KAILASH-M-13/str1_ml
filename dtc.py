@@ -19,6 +19,7 @@ if csv_data :
 
     if user_input:
         response = user_input
+        st.write("you:", response)
         st.write("Chatbot:", response)
 
 
