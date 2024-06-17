@@ -19,7 +19,7 @@ if csv_data :
 
         if submit:
           st.session_state['user'].append(user_input)
-          st.session_state['assistant'].append(output)
+          st.session_state['assistant'].append('output')
 if st.session_state['assistant']:
         for i in range(len(st.session_state['assistant'])):
             message(st.session_state["user"][i], is_user=True, key=str(i) + '_user')
