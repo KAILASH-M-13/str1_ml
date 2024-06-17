@@ -20,8 +20,6 @@ if csv_data :
         st.session_state.messages = []
     
     # Display the chat messages
-    st.title("WhatsApp-like Chat Interface")
-    st.markdown("### Chat History")
     
     for msg in st.session_state.messages:
         message_bubble(msg["message"], msg["is_user"])
